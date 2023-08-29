@@ -4,14 +4,14 @@ import Header from "./component/Header";
 import Body from "./component/Body";
 import About from "./component/About";
 import Error from "./component/Error";
-import {BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Contact from "./component/Contact";
 
 const AppLayout = () => {
   return (
     <div>
       <Header />
-      <Body />
+     <Body/>
     </div>
   );
 };

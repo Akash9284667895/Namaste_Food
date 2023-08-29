@@ -1,11 +1,15 @@
+import React from "react";
+// import { useRouteError } from "react-router-dom";
 
-const Error = ()=>{
-    return(
-        <div>
-            <h2>OOPS</h2>
-            <h3>Something Went Rong.</h3>
-        </div>
-    )
-}
+const Error = () => {
+//   const error = useRouteError();
+
+  return (
+    <div className="Contact-info">
+      <h2>OOPS</h2>
+      <h3>"Something Went Wrong."</h3>
+    </div>
+  );
+};
 
 export default Error;
