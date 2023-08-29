@@ -5,12 +5,14 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   const [resList, setReslist] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurant,setFilteredRestaurants]=useState([]);
+  const [filteredRestaurant, setFilteredRestaurants] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
-
+  const handleShowAll = () => {
+    setFilteredRestaurants(resList); // Display all restaurants
+  };
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.83641491733662&lng=75.2922973036766&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -22,11 +24,12 @@ const Body = () => {
     setReslist(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFilteredRestaurants( json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   if (resList.length === 0) {
-    // Check if resList is empty
     return <Shimmer />;
   }
   return (
@@ -41,7 +44,7 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button
+          <button className="filter-btn"
             onClick={() => {
               const filterrestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -58,11 +61,12 @@ const Body = () => {
             const filteredList = resList.filter(
               (res) => res.info.avgRating > 4
             );
-            setReslist(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           Top Rating Restro
         </button>
+        <button className="all_restro_btn" onClick={handleShowAll}>All Restaurants</button>
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (

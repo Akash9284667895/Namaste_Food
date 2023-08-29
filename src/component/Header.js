@@ -18,6 +18,7 @@ const Header = () => {
           <ul>
             <li>Home</li>
             <li>About</li>
+            <li>Contact</li>
             <li>Cart</li>
             <button className="btn-login" onClick={()=>{
               name==="Login"
