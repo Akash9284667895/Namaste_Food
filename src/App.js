@@ -7,6 +7,7 @@ import About from "./component/About";
 import Error from "./component/Error";
 import Contact from "./component/Contact";
 import Cart from "./component/Cart";
+import RestroMenu from "./component/RestroMenu";
 
 const AppLayout = () => {
   return (
@@ -27,6 +28,7 @@ const AppConfig = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
+          <Route path="/restaurant/:id" element={<RestroMenu />} />
         </Route>
       </Routes>
     </BrowserRouter>
