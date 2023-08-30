@@ -1,7 +1,7 @@
 
 const About = ()=>{
     return(
-        <div>
+        <div className="Contact-info">
             About Page
         </div>
     )

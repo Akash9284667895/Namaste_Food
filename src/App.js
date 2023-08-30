@@ -2,34 +2,35 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./component/Header";
 import Body from "./component/Body";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import About from "./component/About";
 import Error from "./component/Error";
-import {BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Contact from "./component/Contact";
+import Cart from "./component/Cart";
 
 const AppLayout = () => {
   return (
     <div>
       <Header />
-     <Body/>
+      <Outlet /> {/* This is where child route components will be rendered */}
     </div>
   );
 };
 
-const AppConfiq = () => {
+const AppConfig = () => {
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}/>
-      <Route path="/about" element={<About />} />
-      <Route path="*" element={<Error />} />
-      <Route path="/contact" element={<Contact/>}/>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Body />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<Error />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
-ReactDOM.render(
-  <BrowserRouter>
-    <AppConfiq />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+ReactDOM.render(<AppConfig />, document.getElementById("root"));
