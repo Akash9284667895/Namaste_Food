@@ -28,7 +28,7 @@ const AppConfig = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
-          <Route path="/restaurant/:id" element={<RestroMenu />} />
+          <Route path="/restaurant/:resId" element={<RestroMenu />} />
         </Route>
       </Routes>
     </BrowserRouter>

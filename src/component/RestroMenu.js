@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const RestroMenu = () => {
- 
+ const {resId} =useParams();
     const [menulist,setMenulist] = useState([]);
     const [itemCards,setItemCards] = useState([]);
   useEffect(() => {
@@ -25,7 +26,7 @@ const RestroMenu = () => {
       <h4>{menulist.costForTwoMessage}</h4>
       <h2>Menu</h2>
       {
-    itemCards.map(item=><li>{item.card.info.name} -{"Res"}  {item.card.info.price/100}</li>)
+    itemCards.map(item=><li>{item.card.info.name} -{"Res"}  {item.card.info.price/100} <button onClick={() => handleAddToCart(item)}>Add</button></li>)
       }
     </div>
   );
