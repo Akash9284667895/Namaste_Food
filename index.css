@@ -123,3 +123,7 @@
     width: 100vw;
     flex-direction: column;
   }
+
+  .info-card{
+    border: 1px solid black;
+  }

@@ -1,8 +1,11 @@
+import User from "./User";
+import UserClass from "./UserClass";
 
 const About = ()=>{
     return(
-        <div className="Contact-info">
-            About Page
+        <div>
+            <User Roll={"Frontend Developer"}/>
+            <UserClass Roll={"React Developer"}/>
         </div>
     )
 }
