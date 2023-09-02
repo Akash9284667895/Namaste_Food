@@ -2,9 +2,11 @@ import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
+import useOnlineStatus from "../utils/UseOnlineStatus";
 
 const Header = () => {
   const [name, setName] = useState("Login");
+  const online=useOnlineStatus();
   const linkStyle = {
     color: "rgb(186 171 171)",
     textDecoration: "none",
@@ -44,6 +46,9 @@ const Header = () => {
           >
             {name}
           </button>
+          <li>
+            Online Status:{online ?"✅":"🔴"}
+          </li>
         </ul>
       </div>
     </div>
