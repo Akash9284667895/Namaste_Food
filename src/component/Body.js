@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/UseOnlineStatus";
 
 const Body = () => {
   const [resList, setReslist] = useState([]);
@@ -29,7 +30,11 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1> Looks Like You're Offine!! Please Check Your Internet Satatus;</h1>
+    );
   if (resList.length === 0) {
     return <Shimmer />;
   }
@@ -45,7 +50,8 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="filter-btn"
+          <button
+            className="filter-btn"
             onClick={() => {
               const filterrestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -67,11 +73,18 @@ const Body = () => {
         >
           Top Rating Restro
         </button>
-        <button className="all_restro_btn" onClick={handleShowAll}>All Restaurants</button>
+        <button className="all_restro_btn" onClick={handleShowAll}>
+          All Restaurants
+        </button>
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-        <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id} ><RestaurantCard resData={restaurant} /></Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
