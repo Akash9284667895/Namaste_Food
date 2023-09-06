@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard ,{withPromtedLable} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/UseOnlineStatus";
+import { withPromtedLable } from "./RestaurantCard";
 
 const Body = () => {
   const [resList, setReslist] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurants] = useState([]);
-
+  const RestroCardPromoted=withPromtedLable(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -40,18 +41,18 @@ const Body = () => {
   }
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="p-4 m-2">
           <input
             type="text"
-            className="search-text"
+            className="border border-solid border-black rounded-lg"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="filter-btn"
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               const filterrestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -62,8 +63,9 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div className="p-4 m-2 flex items-center">
         <button
-          className="filter-btn"
+          className="px-4 py-2 bg-gray-100 rounded-lg"
           onClick={() => {
             const filteredList = resList.filter(
               (res) => res.info.avgRating > 4
@@ -73,11 +75,14 @@ const Body = () => {
         >
           Top Rating Restro
         </button>
-        <button className="all_restro_btn" onClick={handleShowAll}>
+        </div>
+        <div className="p-4 m-2 flex items-center">
+        <button className="px py-2 bg-gray-100 rounded-lg" onClick={handleShowAll}>
           All Restaurants
         </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap ">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}

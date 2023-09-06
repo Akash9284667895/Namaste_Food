@@ -12,42 +12,43 @@ const Header = () => {
     textDecoration: "none",
   };
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-200 shadow-lg">
       <div className="img">
-        <img className="logo" src={LOGO_URL} alt="Logo" />
+        <img className="w-56" src={LOGO_URL} alt="Logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
-            <Link to="/" style={linkStyle}>
+      <div className="flex item-center">
+        <ul className="flex p-4 m-4 items-center">
+          <li className="px-4">
+            <Link to="/" >
               Home
             </Link>
           </li>
-          <li>
-            <Link to="/about" style={linkStyle}>
+          <li className="px-4">
+            <Link to="/about" >
               About
             </Link>
           </li>
-          <li>
-            <Link to="/contact" style={linkStyle}>
+          <li className="px-4">
+            <Link to="/contact" >
               Contact
             </Link>
           </li>
-          <li>
-            <Link to="/cart" style={linkStyle}>
+          <li className="px-4">
+            <Link to="/cart" >
               Cart
             </Link>
           </li>
+          <li className="px-4">
+            Online Status:{online ?"✅":"🔴"}
+          </li>
+          <li className="px-4">
           <button
-            className="btn-login"
             onClick={() => {
               name === "Login" ? setName("Logout") : setName("Login");
             }}
           >
             {name}
           </button>
-          <li>
-            Online Status:{online ?"✅":"🔴"}
           </li>
         </ul>
       </div>
