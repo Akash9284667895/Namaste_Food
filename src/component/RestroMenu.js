@@ -14,7 +14,7 @@ const RestroMenu = () => {
   const menuData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.83641491733662&lng=75.2922973036766&restaurantId=109034&catalog_qa=undefined&submitAction=ENTER"
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.83641491733662&lng=75.2922973036766&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
       );
       const data = await response.json();
 
