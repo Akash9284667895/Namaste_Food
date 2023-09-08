@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestroMenu = () => {
   const [menulist, setMenulist] = useState({});
   const [itemcard, setItemCard] = useState([]);
+  const [categories,setCategories]=useState([]);
 
   const {resId}= useParams();
   console.log(resId)
@@ -19,9 +21,14 @@ const RestroMenu = () => {
       const data = await response.json();
 
       const itemCards =
-        data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-          .itemCards;
+        data.data.cards[2].groupedCard.cardGroupMap.REGULAR.card;
+console.log(itemCards);
 
+const categories = data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+  (c) => c.card.card && c.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+);
+setCategories(categories);
+console.log(categories);
       setMenulist(data.data.cards[0].card.card.info);
       setItemCard(itemCards);
     } catch (error) {
@@ -30,12 +37,12 @@ const RestroMenu = () => {
   };
 
   return (
-    <div className="font-lg m-3 p-3">
-      <h1>{menulist.name}</h1>
-      <h2>{menulist.cuisines}</h2>
+    <div className="font-lg m-3 p-3 text-center ">
+      <h1 className="font-bold my-6 text-2xl">{menulist.name}</h1>
+      <h2 className="font-bold text-lg">{menulist.cuisines}</h2>
       <h1>Cost For: {menulist.costForTwoMessage}</h1>
       <p>Menu</p>
-      <div className=" font-bold m-2 py-5">
+      {/* <div className="  m-2 py-5">
       {Array.isArray(itemcard) ? (
         itemcard.map((item, index) => (
           <li key={index}>{item.card.info.name}{"  Rs -"} {item.card.info.price/100}</li>
@@ -43,7 +50,9 @@ const RestroMenu = () => {
       ) : (
         <div>No menu items available</div>
       )}
-      </div>
+      </div> */}
+      {categories.map((category)=>(
+      <RestaurantCategory data={category?.card?.card}/>))}
     </div>
   );
 };
