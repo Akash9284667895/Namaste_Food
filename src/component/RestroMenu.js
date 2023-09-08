@@ -5,7 +5,8 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestroMenu = () => {
   const [menulist, setMenulist] = useState({});
   const [itemcard, setItemCard] = useState([]);
-  const [categories,setCategories]=useState([]);
+  const [categories, setCategories]=useState([]);
+
 
   const {resId}= useParams();
   console.log(resId)
@@ -39,18 +40,19 @@ console.log(categories);
   return (
     <div className="font-lg m-3 p-3 text-center ">
       <h1 className="font-bold my-6 text-2xl">{menulist.name}</h1>
-      <h2 className="font-bold text-lg">{menulist.cuisines.join(" , ")}</h2>
-      <h1>Cost For: {menulist.costForTwoMessage}</h1>
-      <p>Menu</p>
-      {/* <div className="  m-2 py-5">
+      <h2 className="font-bold text-lg">{menulist.cuisines}</h2>
+      <h1 className="font-bold text-lg">Cost For: {menulist.costForTwoMessage}</h1>
+      <p className="font-bold text-lg">Menu</p>
+      { <div className="  m-2 py-5">
       {Array.isArray(itemcard) ? (
         itemcard.map((item, index) => (
           <li key={index}>{item.card.info.name}{"  Rs -"} {item.card.info.price/100}</li>
         ))
       ) : (
-        <div>No menu items available</div>
+        <div></div>
       )}
-      </div> */}
+      </div>
+      }
       {categories.map((category)=>(
       <RestaurantCategory data={category?.card?.card}/>))}
     </div>
