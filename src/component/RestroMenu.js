@@ -40,7 +40,9 @@ const RestroMenu = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+if(itemcard ===0){
+  return "Loading";
+}
   return (
     <div className="font-lg m-3 p-3 text-center ">
       <h1 className="font-bold my-6 text-2xl">{menulist.name}</h1>
