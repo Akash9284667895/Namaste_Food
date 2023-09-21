@@ -3,17 +3,12 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
 import useOnlineStatus from "../utils/UseOnlineStatus";
 
 const Header = () => {
   const [name, setName] = useState("Login");
   const online=useOnlineStatus();
 const {loggedInUser} = useContext(UserContext);
-  const linkStyle = {
-    color: "rgb(186 171 171)",
-    textDecoration: "none",
-  };
   return (
     <div className="flex justify-between bg-pink-200 shadow-lg">
       <div className="img">
