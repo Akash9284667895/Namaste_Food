@@ -9,10 +9,10 @@ const Body = () => {
   const [resList, setReslist] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurants] = useState([]);
-  const RestroCardPromoted=withPromtedLable(RestaurantCard);
+  // const RestroCardPromoted=withPromtedLable(RestaurantCard);
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
   const handleShowAll = () => {
     setFilteredRestaurants(resList); // Display all restaurants
   };

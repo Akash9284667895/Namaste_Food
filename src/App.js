@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Header from "./component/Header";
 import Body from "./component/Body";
@@ -8,13 +8,31 @@ import Error from "./component/Error";
 import Contact from "./component/Contact";
 import Cart from "./component/Cart";
 import RestroMenu from "./component/RestroMenu";
+import UserContext from "./utils/UserContext";
 
 const AppLayout = () => {
+
+const [userInfo,setUserInfo]= useState();
+
+//authentication
+
+useEffect(()=>{
+// make an API call send Username and Password
+
+const data = {
+  name: "Akshay"
+};
+setUserInfo(data.name)
+},[]);
+
+
   return (
+    <UserContext.Provider value={{loggedInUser:userInfo}}>
     <div>
       <Header />
       <Outlet /> {/* This is where child route components will be rendered */}
     </div>
+    </UserContext.Provider>
   );
 };
 
