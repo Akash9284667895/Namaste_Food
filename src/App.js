@@ -20,14 +20,14 @@ useEffect(()=>{
 // make an API call send Username and Password
 
 const data = {
-  name: "Akshay"
+  name: "AKASH"
 };
 setUserInfo(data.name)
 },[]);
 
 
   return (
-    <UserContext.Provider value={{loggedInUser:userInfo}}>
+    <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
     <div>
       <Header />
       <Outlet /> {/* This is where child route components will be rendered */}

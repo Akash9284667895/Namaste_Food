@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import RestaurantCard ,{withPromtedLable} from "./RestaurantCard";
+import { useState, useEffect, useCallback, useContext } from "react";
+import RestaurantCard, { withPromtedLable } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/UseOnlineStatus";
 import { withPromtedLable } from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [resList, setReslist] = useState([]);
@@ -12,7 +13,7 @@ const Body = () => {
   // const RestroCardPromoted=withPromtedLable(RestaurantCard);
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
   const handleShowAll = () => {
     setFilteredRestaurants(resList); // Display all restaurants
   };
@@ -31,6 +32,7 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  const { loggedInUser, setUserInfo } = useContext(UserContext);
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
@@ -83,6 +85,14 @@ const Body = () => {
           >
             All Restaurants
           </button>
+        </div>
+        <div className="p-4 m-2 flex items-center">
+          <label className="p-2">UserName: </label>
+          <input
+            className="border border-solid border-black rounded-lg"
+            value={loggedInUser}
+            onChange={(e) => setUserInfo(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
