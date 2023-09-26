@@ -47,7 +47,7 @@ const Body = () => {
         <div className="p-4 m-2">
           <input
             type="text"
-            className="border border-solid border-black rounded-lg"
+            className="border border-solid border-black rounded-lg px-2 py-1"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -89,7 +89,7 @@ const Body = () => {
         <div className="p-4 m-2 flex items-center">
           <label className="p-2">UserName: </label>
           <input
-            className="border border-solid border-black rounded-lg"
+            className="border border-solid border-black rounded-lg px-2 py-1"
             value={loggedInUser}
             onChange={(e) => setUserInfo(e.target.value)}
           />
@@ -107,6 +107,6 @@ const Body = () => {
       </div>
     </div>
   );
-};
+  }; 
 
 export default Body;
