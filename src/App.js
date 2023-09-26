@@ -9,6 +9,8 @@ import Contact from "./component/Contact";
 import Cart from "./component/Cart";
 import RestroMenu from "./component/RestroMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const AppLayout = () => {
 
@@ -27,12 +29,14 @@ setUserInfo(data.name)
 
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
     <div>
       <Header />
       <Outlet /> {/* This is where child route components will be rendered */}
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
