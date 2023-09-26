@@ -1,7 +1,14 @@
 import { ITEM_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice"
+import { useDispatch } from "react-redux";
 
 const ItemList = ({ items }) => {
   // console.log("item Data is", items);
+  const dispatch = useDispatch();
+
+  const handleAddItem = () =>{
+    dispatch(addItem("Pizza"));
+  };
 
   return (
     <div>
@@ -16,7 +23,7 @@ const ItemList = ({ items }) => {
               src={ITEM_URL + item.card.info.imageId}
               alt={item.card.info.name}
             />
-            <button className="absolute top-2 right-2 bg-blue-500 text-white px-2 my-5 py-1 rounded-full hover:bg-blue-600 hover:text-gray-100">
+            <button className="absolute top-2 right-2 bg-blue-500 text-white px-2 my-5 py-1 rounded-full hover:bg-blue-600 hover:text-gray-100" onClick={handleAddItem}>
               Add +
             </button>
             <span className="block text-center">
