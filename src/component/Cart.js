@@ -48,7 +48,9 @@ const Cart = () => {
         </div>
       ))
     ) : (
-      <p>Your cart is empty.</p>
+      <p>Your cart is empty.
+        <button>See restaurants near you</button>
+      </p>
     )}
   </div>
 </div>
