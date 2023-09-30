@@ -1,18 +1,6 @@
-
-const Shimmer =()=>{
-    return(
-        <div className="shimmer-container">
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-        </div>
-    )
-}
-
-export default Shimmer
+ const Shimmer =()=>{
+    return <div className="m-8 p-4 w-[250px] h-[420px] rounded-lg overflow-hidden bg-gray-200 hover:bg-gray-300">
+    { }
+  </div>
+ }
+ export default Shimmer;
