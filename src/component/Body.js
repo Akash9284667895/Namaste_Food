@@ -43,7 +43,7 @@ const Body = () => {
     return <Shimmer />;
   }
   return (
-    <div className="body">
+    <div>
       <div className="filter flex">
         <div className="p-4 m-2">
           <input

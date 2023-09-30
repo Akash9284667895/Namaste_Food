@@ -19,7 +19,7 @@ const Cart = () => {
   
   
   return (
-    <div className="text-center m-4 p-4">
+    <div className="text-center m-4 p-4 ">
   <div className="flex justify-between items-center mb-4">
     <h1 className="text-2xl font-bold">Cart</h1>
     <button className="text-2xl font-bold bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg" onClick={handleClearAll}>
