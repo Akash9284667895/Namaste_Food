@@ -3,6 +3,7 @@ import { clearCart } from "../utils/cartSlice";
 import { ITEM_URL } from "../utils/constants";
 
 
+
 const Cart = () => { 
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
@@ -10,6 +11,12 @@ const Cart = () => {
     console.log("Item Clear");
     dispatch(clearCart());
   }
+ 
+  
+  const handleRedirectToHome = () => {
+    window.location.href = "/";// Replace "/" with the actual path to your home page.
+  };
+  
   
   return (
     <div className="text-center m-4 p-4">
@@ -48,9 +55,15 @@ const Cart = () => {
         </div>
       ))
     ) : (
-      <p>Your cart is empty.
-        <button>See restaurants near you</button>
-      </p>
+      <div className="text-center">
+      <p className="text-xl font-semibold text-gray-700 mb-4">Your cart is empty.</p>
+      <button
+        onClick={handleRedirectToHome}
+        className="text-2xl font-bold bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
+      >
+        See restaurants near you
+      </button>
+    </div>
     )}
   </div>
 </div>
