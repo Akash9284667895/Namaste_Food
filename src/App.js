@@ -11,6 +11,7 @@ import RestroMenu from "./component/RestroMenu";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Footer from "./component/Footer";
 
 const AppLayout = () => {
 
@@ -34,6 +35,7 @@ setUserInfo(data.name)
     <div>
       <Header />
       <Outlet /> {/* This is where child route components will be rendered */}
+      <Footer/>
     </div>
     </UserContext.Provider>
     </Provider>

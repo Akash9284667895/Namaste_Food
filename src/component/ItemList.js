@@ -3,7 +3,6 @@ import { addItem } from "../utils/cartSlice"
 import { useDispatch } from "react-redux";
 
 const ItemList = ({ items }) => {
-  // console.log("item Data is", items);
   const dispatch = useDispatch();
 
   const handleAddItem = (item) =>{
