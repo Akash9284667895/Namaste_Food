@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/UseOnlineStatus";
 import { withPromtedLable } from "./RestaurantCard";
 import UserContext from "../utils/UserContext";
+import Footer from "./Footer";
 
 const Body = () => {
   const [resList, setReslist] = useState([]);
@@ -105,6 +106,7 @@ const Body = () => {
           </Link>
         ))}
       </div>
+      <Footer/>
     </div>
   );
   }; 
