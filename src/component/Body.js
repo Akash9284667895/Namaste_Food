@@ -69,6 +69,14 @@ const Body = () => {
         <div className="p-4 m-2 flex items-center">
           <button
             className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={handleShowAll}
+          >
+            All Restaurants
+          </button>
+        </div>
+        <div className="p-4 m-2 flex items-center">
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-lg"
             onClick={() => {
               const filteredList = resList.filter(
                 (res) => res.info.avgRating > 4
@@ -77,14 +85,6 @@ const Body = () => {
             }}
           >
             Top Rating Restro
-          </button>
-        </div>
-        <div className="p-4 m-2 flex items-center">
-          <button
-            className="px-4 py-2 bg-gray-100 rounded-lg"
-            onClick={handleShowAll}
-          >
-            All Restaurants
           </button>
         </div>
         <div className="p-4 m-2 flex items-center">
