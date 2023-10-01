@@ -17,6 +17,7 @@ const Body = () => {
   }, []);
   const handleShowAll = () => {
     setFilteredRestaurants(resList); // Display all restaurants
+    setSearchText("");
   };
   const fetchData = async () => {
     const data = await fetch(
